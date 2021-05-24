@@ -1,7 +1,34 @@
 {% extends 'main.html' %}
 
 {% block content %}
-    <h3 class="green">Inscription</h3>
+    <form method="post" novalidate class="d-flex flex-column align-items-center p-2 m-2">
+        {% csrf_token %}
 
+        <h3 class="text-center green my-4">Inscription</h3>
+        <h6 class="text-center green mb-4">pour la Messe du {{ day.date_french|lower }}</h6>
 
+        <!-- DAY (hidden input) -->
+        {{ form.day }}
+
+        <div>
+            <table class="table table-borderless">
+                <!-- FATHER -->
+                <tr>
+                    <td class="green mt-5">Célébrant :</td>
+                    <td>{{ form.father }}</td>
+                </tr>
+    
+                <!-- BROTHER -->
+                <tr>
+                    <td class="green mt-5">Servant :</td>
+                    <td>{{ form.brother }}</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- VALIDATION -->
+        <div class="w-100 d-flex flex-column align-items-center">
+            <button type="submit" id="btn_validate_billet" class="btn btn-primary mt-5">Valider</button>
+        </div>
+    </form>
 {% endblock content %}

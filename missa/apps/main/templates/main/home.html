@@ -9,13 +9,13 @@
                 <td class="col-3 font-weight-bold">Jour</td>
                 <td class="col-3 font-weight-bold">Célébrant</td>
                 <td class="col-3 font-weight-bold">Servant</td>
-                <td class="col-2 font-weight-bold"></td>
+                <td class="col-2 font-weight-bold">Action</td>
             </tr>
             {% for day in days %}
                 <tr>
                     <td class="font-weight-bold">{{ day.date_french }}</td>
-                    <td>{{ day.father|default_if_none:'' }}</td>
-                    <td>{{ day.brother|default_if_none:'' }}</td>
+                    <td class="text-center">{{ day.father|default_if_none:'' }}</td>
+                    <td class="text-center">{{ day.brother|default_if_none:'' }}</td>
                     <td class="text-center font-weight-bold"><a href={% url 'main:update' day.pk %}>Je m'inscris !</a></td>
                 </tr>
             {% endfor %}
